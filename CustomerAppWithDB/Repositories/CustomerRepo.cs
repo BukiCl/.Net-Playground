@@ -5,7 +5,7 @@ namespace Repositories
 {
     public class CustomerRepo
     {
-        private CustomerContext _context = new CustomerContext();
+        private readonly CustomerContext _context = new CustomerContext();
 
         public void AddCustomer()
         {
@@ -80,9 +80,8 @@ namespace Repositories
             }
             else
             {
-                allCustomersInDb.Remove(customerInList);
+                _context.Customers.Remove(customerInList);
             }
-
             _context.SaveChanges();
         }
     }
