@@ -12,7 +12,7 @@ namespace CustomerApp
             {
                 Console.WriteLine("\nWELCOME TO THE GRAND CUSTOMER APP\n");
                 Console.WriteLine("1.ADD CUSTOMER\n2.ADD N CUSTOMERS\n3.PRINT CUSTOMERS\n" +
-                    "4.RENAME A CUSTOMER");
+                    "4.RENAME A CUSTOMER\n5.DELETE A CUSTOMER");
 
                 var choice = int.Parse(Console.ReadLine());
                 switch(choice)
@@ -36,6 +36,12 @@ namespace CustomerApp
                         Console.WriteLine("ENTER THE CUSTOMER YOU WANT TO RENAME: ");
                         var rCustomer = Console.ReadLine();
                         customerWorker.RenameCustomer(rCustomer);
+                        break;
+                    case 5:
+                        Console.WriteLine("DELETE A CUSTOMER");
+                        Console.WriteLine("ENTER THE NAME OF THE CUSTOMER YOU WANT TO DELETE: ");
+                        var customerToDelete = Console.ReadLine();
+                        customerWorker.DeleteCustomer(customerToDelete);
                         break;
                     default:
                         Console.WriteLine("INVALID NUMBER");

@@ -54,15 +54,28 @@ namespace Workers
             //    }
             //} 
 
-            var CustomerInList = Customers.Where(e => e.FirstName == fName).FirstOrDefault();
-            if(CustomerInList is not null)
+            var customerInList = Customers.Where(e => e.FirstName == fName).FirstOrDefault();
+            if(customerInList is not null)
             {
                 Console.WriteLine("ENTER THE NEW FIRSTNAME: ");
                 var nFName = Console.ReadLine();
-                CustomerInList.FirstName = nFName;
+                customerInList.FirstName = nFName;
             } else
             {
                 Console.WriteLine("Customer dosen't exist!");
+            }
+        }
+
+        public void DeleteCustomer(string? customerToDelete)
+        {
+            var customerInList = Customers.Where(e => e.FirstName == customerToDelete).FirstOrDefault();
+            if(customerInList is not null)
+            {
+                Customers.Remove(customerInList);
+                Console.WriteLine("DELETE WAS SUCCESFULL");
+            } else
+            {
+                Console.WriteLine("CUSTOMER DOSEN'T EXIST!");
             }
         }
 
